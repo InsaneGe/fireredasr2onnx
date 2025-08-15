@@ -1,0 +1,13 @@
+cn2an==0.5.23
+kaldiio==2.18.1
+kaldi_native_fbank==1.21.2
+numpy==1.26.4
+peft==0.16.0
+sentencepiece==0.2.0
+torch==2.7.1
+transformers==4.53.1
+onnx==1.18.0
+onnxruntime-gpu==1.22.0
+torchaudio==2.7.1
+pydub==0.25.1
+onnxslim==0.1.59
