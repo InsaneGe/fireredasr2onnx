@@ -22,8 +22,8 @@ if args.project_path not in sys.path:
 from fireredasr.tokenizer.aed_tokenizer import ChineseCharEnglishSpmTokenizer
 from fireredasr.data.asr_feat import ASRFeatExtractor
 
-onnx_model_A = os.path.join(args.onnx_folder_path, "FireRedASR_AED_L-Encoder-Batch.onnx")
-onnx_model_B = os.path.join(args.onnx_folder_path, "FireRedASR_AED_L-Decoder-Batch.onnx")
+onnx_model_A = os.path.join(args.onnx_path, "FireRedASR_AED_L-Encoder-Batch.onnx")
+onnx_model_B = os.path.join(args.onnx_path, "FireRedASR_AED_L-Decoder-Batch.onnx")
 
 # If you have accelerate devices for : ['CUDAExecutionProvider', 'TensorrtExecutionProvider', 'CoreMLExecutionProvider', 'DmlExecutionProvider', 'OpenVINOExecutionProvider', 'ROCMExecutionProvider', 'MIGraphXExecutionProvider', 'AzureExecutionProvider']
 ORT_Accelerate_Providers = ['CUDAExecutionProvider']
@@ -97,9 +97,9 @@ num_layers_2_plus_2 = num_layers_2 + 2
 tokenizer = ChineseCharEnglishSpmTokenizer(args.model_path + "/dict.txt", args.model_path + "/train_bpe1000.model")
 feat_extractor = ASRFeatExtractor(os.path.join(args.model_path, "cmvn.ark"))
 
+test_audio = args.test_audio
 for i in range(0, len(test_audio), BATCH_SIZE):
     batch_audio = test_audio[i:min(len(test_audio),i+BATCH_SIZE)] # in case len(test_audio) can't be divided by batch_size
-
     start_time = time.time()
 
     input_ids = np.array([[3]] * len(batch_audio), dtype=np.int32)

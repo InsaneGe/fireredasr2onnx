@@ -13,10 +13,10 @@ import argparse
 
 # Argument parsing
 parser = argparse.ArgumentParser(description='FireRedASR ONNX Exporter and Runner')
-parser.add_argument('--model_path', type=str, default='/home/ec2-user/SageMaker/FireRedTeam/FireRedASR-AED-L', help='Path to the model weights')
+parser.add_argument('--model_path', required=True, type=str, help='Path to the model weights')
 parser.add_argument('--project_path', type=str, default="./FireRedASR", help='Path to the FireRedASR project')
 parser.add_argument('--onnx_folder_path', type=str, default="./onnx_model", help='Path to save ONNX models')
-parser.add_argument('--test_audio', nargs='+', default=["./example/zh_1.wav", "./example/zh_2.wav"], help='List of test audio files')
+parser.add_argument('--test_audio', nargs='+', default=["./example/test1.wav", "./example/test2.wav"], help='List of test audio files')
 
 args = parser.parse_args()
 
